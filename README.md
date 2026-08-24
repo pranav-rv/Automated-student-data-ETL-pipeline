@@ -1,52 +1,65 @@
-# Automated-student-data-ETL-pipeline
-Python-based automated ETL pipeline for Excel-to-Excel student data synchronization and reporting.
 # Automated Student Data ETL Pipeline
 
-## 📌 Project Overview
-
-This project demonstrates a Python-based automated ETL (Extract, Transform, Load) pipeline that connects two Excel-based applications.
-
-The pipeline extracts student data from a source Excel workbook, applies predefined business rules to calculate Grade and Pass/Fail status, and loads the transformed data into a separate reporting workbook.
-
-The pipeline also monitors the source file for changes and automatically refreshes the reporting output when new changes are detected.
+> Python-based ETL automation for Excel-to-Excel student data processing, business-rule transformation, and automated reporting.
 
 ---
 
-## 🎯 Business Problem
+## 📌 1. Project Overview
 
-In a traditional manual reporting process, users need to:
+This project demonstrates a Python-based automated ETL (Extract, Transform, Load) pipeline designed to automate a manual student reporting process.
 
-1. Update student marks.
+The solution extracts student data from a source Excel workbook, applies predefined business rules to calculate Grade and Pass/Fail status, and loads the transformed data into a separate reporting workbook.
+
+The pipeline also monitors the source Excel file for changes and automatically refreshes the reporting output when the source data is updated.
+
+---
+
+## 🎯 2. Business Problem
+
+The original process required users to manually:
+
+1. Update student marks in Excel.
 2. Calculate grades.
 3. Determine Pass/Fail status.
-4. Copy or transfer the updated data into a reporting workbook.
-5. Repeat the process whenever the source data changes.
+4. Transfer updated information to a reporting workbook.
+5. Repeat the process whenever the source data changed.
 
-This creates unnecessary manual effort and increases the risk of:
+This created:
 
-- Data-entry errors
-- Incorrect calculations
-- Outdated reports
-- Repetitive work
-- Inconsistent business rules
+- Repetitive manual work
+- Risk of calculation errors
+- Copy-paste dependency
+- Delayed reporting
+- Inconsistent application of business rules
+
+### Business Objective
+
+Automate the data processing and reporting workflow while maintaining consistent business rules and reducing manual intervention.
 
 ---
 
-## 💡 Solution
+## 💡 3. Proposed Solution
 
-A lightweight Python ETL pipeline was developed to automate the process.
+A Python-based ETL pipeline was developed to automate the complete workflow.
 
 ```text
 Student_Source.xlsx
-        ↓
-      Extract
-        ↓
-      Pandas
-        ↓
-     Transform
-        ↓
- Grade + Pass/Fail
-        ↓
-       Load
-        ↓
+        │
+        ▼
+     EXTRACT
+        │
+        ▼
+   Python / Pandas
+        │
+        ▼
+    TRANSFORM
+   ┌───────────────┐
+   │ Grade         │
+   │ Pass / Fail   │
+   └───────────────┘
+        │
+        ▼
+      LOAD
+        │
+        ▼
 Student_Report.xlsx
